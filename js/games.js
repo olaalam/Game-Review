@@ -6,6 +6,13 @@ export class Games {
         this.ui = new UI();
         this.initEventListeners();
         this.displayGames("mmorpg");
+        const links = document.querySelectorAll(".nav-link");
+        links.forEach((link) => {
+          link.addEventListener("click", () => {
+            links.forEach((lnk) => lnk.classList.remove("active")); // Remove active class
+            link.classList.add("active"); // Add active class to clicked link
+          });
+        });
     }
 
     async displayGames(category) {
@@ -15,6 +22,7 @@ export class Games {
             this.initCardClickEvents(data);
         }
     }
+
 
     initEventListeners() {
         const categoryLinks = document.querySelectorAll('.navbar-nav .nav-link');
